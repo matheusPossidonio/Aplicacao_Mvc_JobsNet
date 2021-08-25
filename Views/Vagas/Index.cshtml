@@ -1,0 +1,33 @@
+﻿@{
+    ViewData["Title"] = "Vagas Disponives";
+}
+<h1>@ViewData["Title"]</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Id da vaga
+            </th>
+            <th>
+                Vaga
+            </th>
+            <th>
+                Descrição da vaga
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var vaga in (List<Vaga>)ViewBag.Vagas) {
+        <tr>
+            <td>
+                @vaga.vagaId
+            </td>
+            <td>
+                @vaga.nomeVaga
+            </td>
+            <td>
+                @vaga.descricaoVaga
+            </td>
+        </tr>
+}

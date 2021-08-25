@@ -1,0 +1,301 @@
+﻿@{
+    ViewData["Title"] = "Documentos";
+}
+<h1>@ViewData["Title"]</h1>
+
+<form id="formularioCandidato">
+
+  
+  <div class="form-row">
+    <div class="form-group col-md-4">
+      <label for="cpf">CPF</label>
+      <input type="text" class="form-control" id="cpf" placeholder="000.000.000-00" onblur=buscaCpf()>
+    </div>
+
+
+    <div class="form-group col-md-4">
+      <label for="rg">Identidade</label>
+      <input type="text" class="form-control" id="rg" placeholder="9654725">
+    </div>
+    
+    <div class="form-group col-md-2">
+     <label for="veiculo">Possui Veículo</label>
+      <input type="text" class="form-control" id="veiculo" placeholder="Carro">
+
+    </div><div class="form-group col-md-2">
+     <label for="habilitacao">Tipo da Habilitação</label>
+      <select class="form-control" id="habilitacao" >
+      <option></option>
+      <option>carteira a</option>
+      <option>carteira b</option>
+      <option>carteira ab</option>
+      </select>
+    </div>
+    
+  </div>
+  
+    <h1></h1>
+    <h1></h1>
+    <h1></h1>
+    <h1></h1>
+  <h1> Dados Pessoais</h1>
+
+  <div class="form-row">
+    <div class="form-group col-md-7">
+      <label for="nome">Nome Completo</label>
+      <input type="text" class="form-control" id="nome" placeholder="Andre Carlos Souza e Silva">
+      <small class="form-tex text-muted">* Campo obrigadotrio. </small>
+    </div>
+
+    <div class="form-group col-md-5">
+      <label for="vaga">Vaga Selecionada</label>
+      <input type="text" class="form-control" id="vaga">      
+    </div> 
+
+  </div>
+
+    
+
+
+  <div class="form-row">
+    <div class="form-group col-md-4">
+      <label for="dataNascimento">Data de nascimento</label>
+      <input type="text" class="form-control" id="dataNascimento" placeholder="__/__/____">
+    </div>
+
+     <div class="form-group col-md-4">
+      <label for="estadoCivil">Estado Civil</label>
+      <input type="text" class="form-control" id="estadoCivil" placeholder="Casado">
+    </div>
+
+    <div class="form-group col-md-4">
+      <label for="sexo">Sexo</label>
+      <select class="form-control" id="sexo" >
+        <option></option>
+        <option>masculino</option>
+        <option>feminino</option>
+      </select >
+    </div>
+
+
+
+
+  </div>
+
+
+<h1></h1>
+<h1></h1>
+<h1></h1>
+<h1></h1>
+
+<h1> Endereço</h1>
+
+  <div class="form-row">
+    <div class="form-group col-md-2">
+      <label for="cep">CEP</label>
+      <input type="text" class="form-control" id="cep" onblur=buscaCep()>
+    </div>
+
+  </div>
+
+ 
+
+<div class="form-row">
+   <div class="form-group col-md-7">
+    <label for="endereco">Endereço</label>
+    <input type="text" class="form-control" id="endereco" placeholder="Rua paraiso">
+  </div>
+
+  <div class="form-group col-md-2">
+    <label for="numero">Numero</label>
+    <input type="text" class="form-control" id="numero" placeholder="101">
+  </div>
+
+  <div class="form-group col-md-3">
+    <label for="complemento">Complemento</label>
+    <input type="text" class="form-control" id="complemento" placeholder="Apt, Sala">
+  </div>
+
+</div>
+
+  <div class="form-row">
+    <div class="form-group col-md-4">
+      <label for="bairro">Bairro</label>
+      <input type="text" class="form-control" id="bairro" placeholder="Centro">
+    </div>
+
+    <div class="form-group col-md-6">
+      <label for="cidade">Cidade</label>
+      <input type="text" class="form-control" id="cidade" placeholder="Belo Horizonte">
+    </div>
+
+    <div class="form-group col-md-2">
+     <label for="estado">Estado</label>
+      <select class="form-control" id="estado">
+        </select>
+    </div>
+    
+  </div>
+
+  <h1></h1>
+<h1></h1>
+<h1></h1>
+<h1></h1>
+
+<h1> Contatos</h1>
+
+<div class="form-row">
+    <div class="form-group col-md-3">
+      <label for="telCelular">Telefone Celular</label>
+      <input type="text" class="form-control" id="telCelular">
+    </div>
+
+
+    <div class="form-group col-md-3">
+      <label for="telFixo">Telefone Fixo</label>
+      <input type="text" class="form-control" id="telFixo" >
+    </div>
+    
+    <div class="form-group col-md-6">
+      <label for="email">Email</label>
+      <input type="email" class="form-control" id="email" placeholder="exemplo@gmail.com">
+    </div>
+    
+  </div>
+
+
+
+  
+  <button type="submit " class="btn btn-primary">Cadastrar</button>
+</form>
+
+
+<script>
+  let formulario=document.getElementById("formularioCandidato");
+  // pegar todos inputs
+  let inputs = formulario.getElementsByTagName('input');
+  // transformar HTMLCollection em array
+  let inputsArray = [...inputs];
+  function geraUf()
+  {
+    let estado =["","ac","al","ap","am","ba","ce","df","es","go","ma","mt","ms","mg","pa","pb","pr","pe","pi","rr","ro","rj","rn",
+                "rs","sc","sp","se","to"];
+    console.log(sexo);
+    let html=""
+    for(let i=0;i<estado.length;i++)
+    {
+      html+=`
+        <option>${estado[i]}</option>
+      
+      `
+    }
+    document.getElementById("estado").innerHTML=html;
+  }
+  function buscaCep ()
+  {
+    let temp = document.getElementById("cep").value;
+    temp = temp.replace(".","");
+    let stringConexao=`https://viacep.com.br/ws/${temp}/json/`;
+      fetch(stringConexao).then( async function (response) {
+        let cep = await response.json();
+        console.log(cep.uf);
+        document.getElementById("estado").value = cep.uf.toLowerCase();
+        document.getElementById("cidade").value =cep.localidade;
+        document.getElementById("endereco").value  =cep.logradouro;
+        document.getElementById("bairro").value  =cep.bairro;
+      	// The API call was successful!
+      	//return cep
+      }).catch(function (err) {
+      	// There was an error
+      	console.warn('Something went wrong.', err);
+      });
+  }
+  function buscaCpf()
+  {
+    //local da api
+      let stringConexao="https://localhost:5001/candidatos";
+      let endereco =  fetch(stringConexao).then( async function (response) {
+      let candidato = await response.json();
+      console.log(candidato);
+       
+      for(let i=0;i<candidato.length;i++)
+      {
+        //verifica se o cpf ja existe no banco de dados
+        if(document.getElementById("cpf").value===candidato[i].cpf)
+        {
+          document.getElementById("rg").value =candidato[i].rg ;
+          document.getElementById("veiculo").value =candidato[i].possuiVeiculo ;
+          document.getElementById("habilitacao").value =candidato[i].tipoHabilitacao ;
+          document.getElementById("nome").value =candidato[i].nomeCandidato ;
+          //document.getElementById("vaga").value =candidato. ;
+          document.getElementById("dataNascimento").value =candidato[i].dataNascimento ;
+          document.getElementById("estadoCivil").value =candidato[i].estadoCivil ;
+          document.getElementById("sexo").value =candidato[i].genero ;
+          document.getElementById("cep").value =candidato[i].cep ;
+          document.getElementById("endereco").value =candidato[i].endereco ;
+          document.getElementById("numero").value =candidato[i].numero ;
+          document.getElementById("complemento").value =candidato[i].complemento ;
+          document.getElementById("bairro").value =candidato[i].bairro ;
+          document.getElementById("cidade").value =candidato[i].cidade ;
+          document.getElementById("estado").value = candidato[i].uf;
+          document.getElementById("telCelular").value = candidato[i].telefoneMovel;
+          document.getElementById("telFixo").value =candidato[i].telefoneFixo ;
+          document.getElementById("email").value = candidato[i].emailCandidato;
+        }
+      }
+    	// The API call was successful!
+    	//return cep
+    }).catch(function (err) {
+    	// There was an error
+    	console.warn('Something went wrong.', err);
+    });
+  }
+  //criando listas
+  geraUf();
+</Script>
+
+
+
+
+
+
+
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                candidato id
+            </th>
+            <th>
+                nome do candidato
+            </th>
+            <th>
+                estado civil
+            </th>
+            <th>
+                genero
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var candidato in (List<Candidato>)ViewBag.Candidatos) {
+        <tr>
+            <td>
+                @candidato.candidatoId
+            </td>
+            <td>
+                @candidato.nomeCandidato
+            </td>
+            <td>
+                @candidato.estadoCivil
+            </td>
+            <td>
+                @candidato.genero
+            </td>
+        </tr>
+}
+
+    </tbody>
+</table>
